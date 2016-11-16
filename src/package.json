@@ -27,6 +27,7 @@
   "dependencies": {
     "configstore": "^2.1.0",
     "notie": "^3.9.4",
+    "request": "^2.78.0",
     "wallpaper": "^2.3.0"
   }
 }
