@@ -1,6 +1,6 @@
 {
   "name": "backsplash",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Pick from thousands of desktop backgrounds with a simple click",
   "main": "main.js",
   "scripts": {
