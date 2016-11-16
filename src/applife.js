@@ -25,11 +25,10 @@ function fetchAndDisplay(subreddit) {
   }).then(function(json) {
     var newArray = [];
     for (var x = 0; x < json.data.children.length; x++) {
-      newArray.push(json.data.children[x].data.url);
-    }
-
-    for (var i = 0; i <= newArray.length; i++) {
-      cardsDiv.innerHTML+='<a href="javascript:void(0)"><img id="'+i+'" class="card" src="'+newArray[i]+'" width="350" height="250" onclick="setWallpaper(this);" /></a>';
+      if (json.data.children[x].is_self !== "true") {
+        cardsDiv.innerHTML+='<a href="javascript:void(0)"><img id="'+x+'" class="card" src="'+/*json.data.children[x].data.url*/json.data.children[x].data.preview.images[0].source.url+'" width="375" height="250" onclick="setWallpaper(this);" /></a>';
+        console.log(json.data.children[x].data.preview.images[0].source.url)
+      }
     }
   }).catch(function(error) {
       console.log('There has been a problem with your fetch operation: ' + error.message);
@@ -54,7 +53,32 @@ var setWallpaper = function(image) {
   })
 };
 
+// Listeners
+var backgroundSwitch = false;
+document.getElementById('switch-mode').addEventListener("click", function() {
+  if (!backgroundSwitch) {
+    document.getElementsByTagName('body')[0].style = "-webkit-app-region: drag; background: #E0E0E0;";
+    backgroundSwitch = true;
+  } else if (backgroundSwitch) {
+    document.getElementsByTagName('body')[0].style = "-webkit-app-region: drag; background: #424242;";
+    backgroundSwitch = false;
+  }
+});
+
+document.getElementById('switch-to-top').addEventListener("click", function() {
+  cardsDiv.innerHTML = "";
+  fetchAndDisplay('https://www.reddit.com/r/earthporn/top.json');
+  fetchAndDisplay('https://www.reddit.com/r/naturepics/top.json');
+});
+
+document.getElementById('switch-to-home').addEventListener("click", function() {
+  cardsDiv.innerHTML = "";
+  fetchAndDisplay('https://www.reddit.com/r/earthporn.json');
+  fetchAndDisplay('https://www.reddit.com/r/naturepics.json');
+});
+
 
 (function() {
   fetchAndDisplay('https://www.reddit.com/r/earthporn.json');
+  fetchAndDisplay('https://www.reddit.com/r/naturepics.json');
 })();
