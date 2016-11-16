@@ -1,0 +1,32 @@
+{
+  "name": "backsplash",
+  "version": "0.1.0",
+  "description": "Pick from thousands of desktop backgrounds with a simple click",
+  "main": "main.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/r00t1000/backsplash.git"
+  },
+  "keywords": [
+    "node",
+    "electron",
+    "macos"
+  ],
+  "author": "Jacob Jimenez (r00t1000)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/r00t1000/backsplash/issues"
+  },
+  "homepage": "https://github.com/r00t1000/backsplash#readme",
+  "devDependencies": {
+    "electron": "^1.4.6"
+  },
+  "dependencies": {
+    "configstore": "^2.1.0",
+    "notie": "^3.9.4",
+    "wallpaper": "^2.3.0"
+  }
+}

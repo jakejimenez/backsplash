@@ -1,0 +1,13 @@
+body {
+ background: #424242;
+}
+
+.card {
+ padding: 1%;
+ border-radius: 25px;
+}
+
+.middlediv {
+  margin-left: 3%;
+  margin-top: 5%;
+}
